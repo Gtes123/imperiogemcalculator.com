@@ -1,0 +1,1964 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gem Calculator</title>
+  
+  <style>
+  /* Asegura que el encabezado ocupe toda la anchura disponible */
+  .site-header {
+    display: none;
+    justify-content: space-between; /* Distribuye el logo y la barra de navegación */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #2a1a3f; /* Color de fondo para el header */
+  }
+
+  /* El contenedor de la barra de navegación */
+  .main-nav {
+    display: flex;
+    justify-content: flex-end; /* Alinea los elementos a la derecha */
+    flex-grow: 1;
+  }
+
+  /* La lista de navegación */
+  .main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  /* Cada enlace de navegación */
+  .main-nav ul li {
+    margin-left: 20px; /* Espacio entre los elementos del menú */
+  }
+
+  .main-nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    font-size: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Estilo cuando se pasa el mouse sobre los enlaces */
+  .main-nav ul li a:hover {
+    background-color: #4a3571; /* Cambia el color al pasar el mouse */
+    border-radius: 5px;
+  }
+
+  <link rel="icon" type="image/png" href="img/pp_1.png">
+  <meta property="og:title" content="Gem Calculator">
+  <meta property="og:description" content="Calculate your gems easily with IMPERIO MARKET 2025 Gem Calculator!">
+  <meta property="og:image" content="https://lordsmobilegemcalculator.com/img/logo.png">
+  <meta property="og:url" content="https://lordsmobilegemcalculator.com/">
+  <meta property="og:type" content="website">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    /* Flexbox ile genel düzen */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    body {
+display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+ background: #f2f2f2; /* Gris muy claro */
+    }
+
+    .wrapper {
+      flex: 1 0 auto;
+    }
+
+    /* Contenedor general */
+    .calculator-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 10px auto;
+      padding: 15px;
+      box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2em;
+      color: #4b0082; /* Morado oscuro (índigo) */
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+    }
+
+    /* CONTENEDOR DE PESTAÑASR */
+    .tab {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: linear-gradient(135deg, #2a1a3f, #3b2a5d);
+      padding: 15px;
+      border-radius: 12px;
+      overflow-x: hidden;
+    }
+
+    .tab::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .tab::-webkit-scrollbar-thumb {
+      background: #9366b8;
+      border-radius: 4px;
+    }
+
+    .tab::-webkit-scrollbar-track {
+      background: #2a1a3f;
+    }
+
+    /* BOTONES DE PESTAÑAS */
+    .tab button.tablinks {
+      flex: 1 1 auto;
+      min-width: 100px;
+      background: linear-gradient(145deg, #6a3e8d, #9366b8);
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab button.tablinks:hover {
+      background: linear-gradient(145deg, #7b4ea2, #a57bc9);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .tab button.tablinks.active {
+      background: linear-gradient(145deg, #9366b8, #b88ed6);
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Estilos de tabla */
+    .tabcontent {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .tabcontent table {
+      width: 100%;
+      border-collapse: collapse;
+      background: transparent;
+      margin-top: 25px;
+    }
+
+    .tabcontent thead {
+      background: linear-gradient(90deg, #4b2b5e, #6a3e8d);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border-radius: 10px 10px 0 0;
+    }
+
+    .tabcontent th {
+      padding: 15px;
+      text-align: center;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tabcontent tbody tr {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .tabcontent tbody tr:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .tabcontent td {
+      padding: 15px;
+      text-align: center;
+      font-size: 15px;
+      border: none;
+    }
+
+    .tabcontent td.item-img {
+      padding: 10px;
+    }
+
+    .item-img img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid rgba(147, 102, 184, 0.3);
+      transition: border-color 0.3s ease;
+    }
+
+    .tabcontent tbody tr:hover .item-img img {
+      border-color: #9366b8;
+    }
+
+    .item-name {
+      font-weight: 500;
+      color: rgb(0, 0, 0);
+    }
+
+    .item-cost {
+      color: rgb(0, 0, 0);
+      font-weight: 600;
+    }
+
+    .quantity-selector {
+      width: 90px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: center;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .quantity-selector:hover,
+    .quantity-selector:focus {
+      border-color: #9366b8;
+      background: rgba(255, 255, 255, 0.1);
+      outline: none;
+    }
+
+    /* Sección de carrito avanzado */
+    #cart {
+      margin-top: 30px;
+      margin-bottom: 80px;
+      background: linear-gradient(135deg, rgba(40, 25, 60, 0.9), rgba(75, 45, 95, 0.9));
+      padding: 20px; /* Padding biraz azaltıldı */
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    #cart h3 {
+      margin-bottom: 15px; /* Başlık ile içerik arası azaltıldı */
+      font-size: 1.6em; /* Başlık biraz küçültüldü */
+      text-align: center;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .cart-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .buy-button, .screenshot-button, .buy-option-button {
+      padding: 12px 25px;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .screenshot-button {
+      background: linear-gradient(145deg, #17a2b8, #1ccad8);
+    }
+
+    .screenshot-button:hover {
+      background: linear-gradient(145deg, #138496, #17a2b8);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .buy-option-button {
+      background: linear-gradient(145deg, #28a745, #34c759);
+      margin-right: 10px;
+    }
+
+    .buy-option-button:hover {
+      background: linear-gradient(145deg, #218838, #28a745);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    #buy-options {
+      display: none;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .cart-total {
+      font-weight: 600;
+      font-size: 1.3em;
+      color: #fff;
+      text-align: right;
+    }
+
+    #cart-items {
+      display: flex;
+      flex-wrap: wrap; /* Ürünler yatayda sıralanır ve alta kayar */
+      gap: 10px; /* Boşluklar azaltıldı */
+    }
+    #cart-items::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #cart-items::-webkit-scrollbar-thumb {
+      background: #9366b8;
+      border-radius: 4px;
+    }
+
+    #cart-items::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 8px; /* Padding azaltıldı */
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      flex: 1 1 calc(33% - 10px); /* Her satırda 3 ürün olacak şekilde */
+      min-width: 100%; /* Minimum genişlik */
+    }
+
+    .cart-item:hover {
+      transform: translateY(-2px); /* Hover efekti hafifletildi */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .cart-item img {
+      width: 40px; /* Resim boyutu küçültüldü */
+      height: 40px;
+      object-fit: cover;
+      margin-right: 10px; /* Boşluk azaltıldı */
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .cart-item-details {
+      flex-grow: 1;
+      color: #f5f5f5;
+      font-size: 0.9em; /* Yazı boyutu küçültüldü */
+    }
+
+    .cart-item-details strong {
+      display: block;
+      font-size: 1em; /* Başlık biraz küçültüldü */
+      margin-bottom: 2px; /* Boşluk azaltıldı */
+      color: #fff;
+    }
+
+    .cart-item-details span {
+      display: block;
+      font-size: 0.8em; /* Detaylar daha küçük */
+      color: #d0d0d0;
+    }
+
+    .remove-item {
+      background: #ff4444;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 20px; /* Buton boyutu küçültüldü */
+      height: 20px;
+      font-size: 14px; /* Yazı boyutu küçültüldü */
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 8px; /* Boşluk azaltıldı */
+      transition: background 0.3s ease;
+    }
+
+    .remove-item:hover {
+      background: #cc0000;
+    }
+
+    /* Footer */
+    .site-footer {
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #2c1b3f, #4a3571);
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      width: 100%;
+    }
+
+    /* Mobil Uyumluluk */
+    @media (max-width: 1300px) {
+      .tab {
+        padding: 10px;
+        gap: 8px;
+      }
+
+      .tab button.tablinks {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+
+      .quantity-selector {
+        width: 80px;
+        padding: 8px;
+      }
+
+      .item-img img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .cart-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .screenshot-button, .buy-option-button {
+        width: 100%;
+        padding: 12px;
+      }
+
+      .cart-total {
+        text-align: center;
+        margin-top: 15px;
+      }
+
+      #cart {
+        margin-bottom: 60px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 1.8em;
+      }
+
+      .tab button.tablinks {
+        min-width: 90px;
+        padding: 8px 15px;
+        font-size: 13px;
+      }
+
+      .tabcontent th, .tabcontent td {
+        padding: 10px;
+        font-size: 13px;
+      }
+
+      .item-img img {
+        width: 45px;
+        height: 45px;
+      }
+      .cart-item {
+        flex: 1 1 100%; /* Küçük ekranlarda tek sütun */
+        min-width: 0;
+      }
+      .quantity-selector {
+        width: 70px;
+        padding: 6px;
+      }
+    }
+
+    @media (max-width: 538px) {
+      h2 {
+        font-size: 1.5em;
+      }
+
+      .tab {
+        padding: 8px;
+      }
+
+      .tab button.tablinks {
+        min-width: 80px;
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+
+      .item-img img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .quantity-selector {
+        width: 60px;
+        padding: 5px;
+      }
+
+      .cart-item img {
+        margin-right: 1;
+        margin-bottom: 10px;
+      }
+
+      #cart h3 {
+        font-size: 1.5em;
+      }
+      .cart-item {
+        flex: 1 1 100%; /* Küçük ekranlarda tek sütun */
+        min-width: 0;
+      }
+
+      .cart-item img {
+        width: 25px;
+        height: 25px;
+      }
+
+      .cart-item-details {
+        font-size: 0.8em;
+      }
+
+      .remove-item {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- header.php -->
+
+
+<header class="site-header">
+  <div class="header-container">
+    <a href="index.php" class="logo">IMPERIO MARKET</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.php" class="nav-link active">Home</a></li>
+        <li><a href="pricing.php" class="nav-link">Pricing</a></li>
+        <li><a href="contact.php" class="nav-link">Contact</a></li>
+        <li><a href="about.php" class="nav-link">About</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle">☰</button>
+  </div>
+</header>
+    <div class="calculator-container">
+      <h2>Gem Calculator @IMPERIO MARKET</h2>
+
+
+      <!-- TAB BUTONLARI -->
+      <div class="tab">
+        <button class="tablinks active" onclick="openTab(event, 'speedups')">Speed Ups</button>
+        <button class="tablinks" onclick="openTab(event, 'combat')">Combat</button>
+        <button class="tablinks" onclick="openTab(event, 'boost')">Boost</button>
+        <button class="tablinks" onclick="openTab(event, 'resources')">Resources</button>
+        <button class="tablinks" onclick="openTab(event, 'chests')">Chests</button>
+        <button class="tablinks" onclick="openTab(event, 'buildings')">Buildings</button>
+        <button class="tablinks" onclick="openTab(event, 'familiar')">Familiar</button>
+        <button class="tablinks" onclick="openTab(event, 'monsterhunt')">Monster Hunt</button>
+      </div>
+
+      <!-- Her kategori için TAB İÇERİĞİ -->
+              <div id="speedups" class="tabcontent" style="display: block;">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Item Name</th>
+                <th>Gem</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+                                                <tr data-index="0">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/s60m.png?ssl=1" alt="Speed 60 Minutes" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Speed 60 Minutes</td>
+                    <td class="item-cost">130</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="1">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/s3h.png?ssl=1" alt="Speed 3 Hours" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Speed 3 Hours</td>
+                    <td class="item-cost">300</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="2">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/s8h.png?ssl=1" alt="Speed 8 Hours" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Speed 8 Hours</td>
+                    <td class="item-cost">650</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="3">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/s15h.png?ssl=1" alt="Speed 15 Hours" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Speed 15 Hours</td>
+                    <td class="item-cost">1000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="4">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/s24h.png?ssl=1" alt="Speed 24 Hours" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Speed 24 Hours</td>
+                    <td class="item-cost">1500</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="5">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/s3d.png?ssl=1" alt="Speed 3 Days" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Speed 3 Days</td>
+                    <td class="item-cost">4400</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="6">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/s7d.png?ssl=1" alt="Speed 7 Days" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Speed 7 Days</td>
+                    <td class="item-cost">10000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="7">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/s30d.png?ssl=1" alt="Speed 30 Days" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Speed 30 Days</td>
+                    <td class="item-cost">40000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                          </tbody>
+          </table>
+        </div>
+              <div id="combat" class="tabcontent" style="display: none;">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Item Name</th>
+                <th>Gem</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+                                                <tr data-index="0">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/braveheart.png?ssl=1" alt="Braveheart" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Braveheart</td>
+                    <td class="item-cost">2000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="1">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/rrelo.png?ssl=1" alt="Random Relocator" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Random Relocator</td>
+                    <td class="item-cost">500</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="2">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/relo.png?ssl=1" alt="Relocator" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Relocator</td>
+                    <td class="item-cost">1500</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="3">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/rp.png?ssl=1" alt="Royal Pass" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Royal Pass</td>
+                    <td class="item-cost">100000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="4">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/wb.png?ssl=1" alt="Winged Boots 25%" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Winged Boots 25%</td>
+                    <td class="item-cost">500</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="5">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/wb.png?ssl=1" alt="Winged Boots 50%" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Winged Boots 50%</td>
+                    <td class="item-cost">900</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="6">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/atkb.png?ssl=1" alt="Attack Boost 20% 12h" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Attack Boost 20% 12h</td>
+                    <td class="item-cost">250</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="7">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/atkb.png?ssl=1" alt="Attack Boost 20% 24h" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Attack Boost 20% 24h</td>
+                    <td class="item-cost">400</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="8">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/defb.png?ssl=1" alt="Army Defence Boost 20% 12h" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Army Defence Boost 20% 12h</td>
+                    <td class="item-cost">250</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="9">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/defb.png?ssl=1" alt="Defence Boost 20% 24h" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Defence Boost 20% 24h</td>
+                    <td class="item-cost">400</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="10">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/asize.png?ssl=1" alt="Army Size Boost 20% 4h" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Army Size Boost 20% 4h</td>
+                    <td class="item-cost">2400</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="11">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/asize.png?ssl=1" alt="Army Size Boost 50% 4h" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Army Size Boost 50% 4h</td>
+                    <td class="item-cost">5000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="12">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/sh8h.png?ssl=1" alt="Shield 8 Hours" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Shield 8 Hours</td>
+                    <td class="item-cost">500</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="13">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/sh24h.png?ssl=1" alt="Shield 24 Hours" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Shield 24 Hours</td>
+                    <td class="item-cost">1000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="14">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/sh3d.png?ssl=1" alt="Shield 3 Days" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Shield 3 Days</td>
+                    <td class="item-cost">3500</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="15">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/sh7d.png?ssl=1" alt="Shield 7 Days" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Shield 7 Days</td>
+                    <td class="item-cost">10000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="16">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/sh24d.png?ssl=1" alt="Shield 14 Days" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Shield 14 Days</td>
+                    <td class="item-cost">25000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="17">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/as24.png?ssl=1" alt="Anti-Scout 24h" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Anti-Scout 24h</td>
+                    <td class="item-cost">600</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="18">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/as3d.png?ssl=1" alt="Anti-Scout 3d" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Anti-Scout 3d</td>
+                    <td class="item-cost">1200</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="19">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/as7d.png?ssl=1" alt="Anti-Scout 7d" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Anti-Scout 7d</td>
+                    <td class="item-cost">3000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                          </tbody>
+          </table>
+        </div>
+              <div id="boost" class="tabcontent" style="display: none;">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Item Name</th>
+                <th>Gem</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+                                                <tr data-index="0">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/xp.png?ssl=1" alt="25% Player EXP Boost 24h" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">25% Player EXP Boost 24h</td>
+                    <td class="item-cost">2500</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="1">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/tr.png?ssl=1" alt="Talent Reset" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Talent Reset</td>
+                    <td class="item-cost">1000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="2">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/tt.png?ssl=1" alt="Talent Tome" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Talent Tome</td>
+                    <td class="item-cost">1000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="3">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/qsa.png?ssl=1" alt="Quest Scroll (Admin)" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Quest Scroll (Admin)</td>
+                    <td class="item-cost">800</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="4">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/qsg.png?ssl=1" alt="Quest Scroll (Guild)" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Quest Scroll (Guild)</td>
+                    <td class="item-cost">1000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="5">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/vp5.png?ssl=1" alt="500 VIP Points" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">500 VIP Points</td>
+                    <td class="item-cost">500</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="6">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/vp10.png?ssl=1" alt="1000 VIP Points" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">1000 VIP Points</td>
+                    <td class="item-cost">1000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="7">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/vp50.png?ssl=1" alt="5000 VIP Points" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">5000 VIP Points</td>
+                    <td class="item-cost">5000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="8">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/lt1.png?ssl=1" alt="10 Lucky Tokens" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">10 Lucky Tokens</td>
+                    <td class="item-cost">6600</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="9">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/lt10.png?ssl=1" alt="100 Lucky Tokens" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">100 Lucky Tokens</td>
+                    <td class="item-cost">60000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="10">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/hs1.png?ssl=1" alt="1000 Holy Stars" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">1000 Holy Stars</td>
+                    <td class="item-cost">2200</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="11">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/hs10.png?ssl=1" alt="10000 Holy Stars" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">10000 Holy Stars</td>
+                    <td class="item-cost">20000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                          </tbody>
+          </table>
+        </div>
+              <div id="resources" class="tabcontent" style="display: none;">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Item Name</th>
+                <th>Gem</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+                                                <tr data-index="0">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/gb.png?ssl=1" alt="Gather Boost 50% 24h" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Gather Boost 50% 24h</td>
+                    <td class="item-cost">600</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="1">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/gb.png?ssl=1" alt="Gather Boost 50% 7d" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Gather Boost 50% 7d</td>
+                    <td class="item-cost">3360</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="2">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/upk.png?ssl=1" alt="Reduce Upkeep 50% 24h" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Reduce Upkeep 50% 24h</td>
+                    <td class="item-cost">2000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="3">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/upk.png?ssl=1" alt="Reduce Upkeep 50% 7d" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Reduce Upkeep 50% 7d</td>
+                    <td class="item-cost">11200</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="4">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/f20.png?ssl=1" alt="Food 20 Million" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Food 20 Million</td>
+                    <td class="item-cost">10000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="5">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/f60.png?ssl=1" alt="Food 60 Million" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Food 60 Million</td>
+                    <td class="item-cost">28000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="6">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/s5.png?ssl=1" alt="Stone 5 Million" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Stone 5 Million</td>
+                    <td class="item-cost">10000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="7">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/s15.png?ssl=1" alt="Stone 15 Million" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Stone 15 Million</td>
+                    <td class="item-cost">28000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="8">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/w5.png?ssl=1" alt="Wood 5 Million" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Wood 5 Million</td>
+                    <td class="item-cost">10000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="9">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/w15.png?ssl=1" alt="Wood 15 Million" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Wood 15 Million</td>
+                    <td class="item-cost">28000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="10">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/o5.png?ssl=1" alt="Ore 5 Million" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Ore 5 Million</td>
+                    <td class="item-cost">10000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="11">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/o15.png?ssl=1" alt="Ore 15 Million" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Ore 15 Million</td>
+                    <td class="item-cost">28000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="12">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/g2.png?ssl=1" alt="Gold 2 Million" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Gold 2 Million</td>
+                    <td class="item-cost">10000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="13">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/g6.png?ssl=1" alt="Gold 6 Million" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Gold 6 Million</td>
+                    <td class="item-cost">28000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                          </tbody>
+          </table>
+        </div>
+              <div id="chests" class="tabcontent" style="display: none;">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Item Name</th>
+                <th>Gem</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+                                                <tr data-index="0">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/rc.png?ssl=1" alt="Rare Material Chest" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Rare Material Chest</td>
+                    <td class="item-cost">1500</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="1">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/ec.png?ssl=1" alt="Epic Material Chest" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Epic Material Chest</td>
+                    <td class="item-cost">3000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="2">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/lc.png?ssl=1" alt="Legendary Material Chest" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Legendary Material Chest</td>
+                    <td class="item-cost">3000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="3">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/rj.png?ssl=1" alt="Rare Jewel Chest" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Rare Jewel Chest</td>
+                    <td class="item-cost">3000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="4">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/ej.png?ssl=1" alt="Epic Jewel Chest" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Epic Jewel Chest</td>
+                    <td class="item-cost">6000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="5">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/lj.png?ssl=1" alt="Legendary Jewel Chest" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Legendary Jewel Chest</td>
+                    <td class="item-cost">6000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="6">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/shg.png?ssl=1" alt="Chisel I" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Chisel I</td>
+                    <td class="item-cost">400</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="7">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/shgr.png?ssl=1" alt="Chisel II" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Chisel II</td>
+                    <td class="item-cost">1000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="8">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/shb.png?ssl=1" alt="Chisel III" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Chisel III</td>
+                    <td class="item-cost">2000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="9">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/shp.png?ssl=1" alt="Chisel IV" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Chisel IV</td>
+                    <td class="item-cost">3000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="10">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/shgo.png?ssl=1" alt="Chisel V" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Chisel V</td>
+                    <td class="item-cost">4000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                          </tbody>
+          </table>
+        </div>
+              <div id="buildings" class="tabcontent" style="display: none;">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Item Name</th>
+                <th>Gem</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+                                                <tr data-index="0">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/art.png?ssl=1" alt="Archaic Tome" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Archaic Tome</td>
+                    <td class="item-cost">900</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="1">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/gh.png?ssl=1" alt="Gold Hammer" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Gold Hammer</td>
+                    <td class="item-cost">2000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="2">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/wt.png?ssl=1" alt="War Tomes" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">War Tomes</td>
+                    <td class="item-cost">15</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="3">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/scu.png?ssl=1" alt="Steel Cuffs" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Steel Cuffs</td>
+                    <td class="item-cost">15</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="4">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/sc.png?ssl=1" alt="Soul Crystal" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Soul Crystal</td>
+                    <td class="item-cost">15</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="5">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/cp.png?ssl=1" alt="Crystal Pickaxe" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Crystal Pickaxe</td>
+                    <td class="item-cost">20</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="6">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/fd.png?ssl=1" alt="Finish Demolition" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Finish Demolition</td>
+                    <td class="item-cost">20</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                          </tbody>
+          </table>
+        </div>
+              <div id="familiar" class="tabcontent" style="display: none;">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Item Name</th>
+                <th>Gem</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+                                                <tr data-index="0">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/brto.png?ssl=1" alt="Bright Talent Orb" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Bright Talent Orb</td>
+                    <td class="item-cost">3000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="1">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/blto.png?ssl=1" alt="Brilliant Talent Orb" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Brilliant Talent Orb</td>
+                    <td class="item-cost">7500</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="2">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/m60m.png?ssl=1" alt="Merge 60 Minutes" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Merge 60 Minutes</td>
+                    <td class="item-cost">260</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="3">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/m3h.png?ssl=1" alt="Merge 3 Hours" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Merge 3 Hours</td>
+                    <td class="item-cost">600</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="4">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/m8h.png?ssl=1" alt="Merge 8 Hours" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Merge 8 Hours</td>
+                    <td class="item-cost">1300</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="5">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/m24h.png?ssl=1" alt="Merge 24 Hours" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Merge 24 Hours</td>
+                    <td class="item-cost">3000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="6">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/m3d.png?ssl=1" alt="Merge 3 Days" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Merge 3 Days</td>
+                    <td class="item-cost">8800</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="7">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/m7d.png?ssl=1" alt="Merge 7 Days" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Merge 7 Days</td>
+                    <td class="item-cost">20000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="8">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/a2m.png?ssl=1" alt="2m Anima" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">2m Anima</td>
+                    <td class="item-cost">10000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="9">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/a6m.png?ssl=1" alt="6m Anima" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">6m Anima</td>
+                    <td class="item-cost">28000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="10">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/ac.png?ssl=1" alt="Anchient Core" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Anchient Core</td>
+                    <td class="item-cost">1000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="11">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/cc.png?ssl=1" alt="Chaos Core" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Chaos Core</td>
+                    <td class="item-cost">7500</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="12">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/pmb.png?ssl=1" alt="10% Pact Merging Boost 1 hour" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">10% Pact Merging Boost 1 hour</td>
+                    <td class="item-cost">1000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                          </tbody>
+          </table>
+        </div>
+              <div id="monsterhunt" class="tabcontent" style="display: none;">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Item Name</th>
+                <th>Gem</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+                                                <tr data-index="0">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/mh.png?ssl=1" alt="Monster Hunt ATK Boost 25%" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">Monster Hunt ATK Boost 25%</td>
+                    <td class="item-cost">1000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="1">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/mh5.png?ssl=1" alt="5000 Energy" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">5000 Energy</td>
+                    <td class="item-cost">1125</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="2">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/mh10.png?ssl=1" alt="10000 Energy" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">10000 Energy</td>
+                    <td class="item-cost">2000</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="3">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/mh20.png?ssl=1" alt="20000 Energy" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">20000 Energy</td>
+                    <td class="item-cost">3500</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                  <tr data-index="4">
+                    <td class="item-img">
+                      <center>
+                        <img src="https://i0.wp.com/lordsgems.com/items/mh50.png?ssl=1" alt="50000 Energy" loading="eager" crossorigin="anonymous">
+                      </center>
+                    </td>
+                    <td class="item-name">50000 Energy</td>
+                    <td class="item-cost">7500</td>
+                    <td>
+                      <input type="number" min="0" max="99999" value="0" class="quantity-selector">
+                    </td>
+                  </tr>
+                                          </tbody>
+          </table>
+        </div>
+
+
+      <!-- Gelişmiş Sepet (Cart) Bölümü -->
+      <div id="cart">
+        
+
+
+
+<!-- Carrito de compras -->
+<div id="cart">
+  <h3>Your Wishlist</h3>
+  <div class="cart-controls">
+    <!-- Botón de restablecer -->
+    <button id="reset-button" class="screenshot-button">Restablecer artículos</button>
+    <div id="buy-options"></div>
+    <div class="cart-total">
+      Total Gems: <span id="total-gem">0</span>
+    </div>
+  </div>
+  <div id="cart-items">
+    <!-- Los artículos se generarán dinámicamente aquí -->
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <p>© 2025 IMPERIO MARKET. All rights reserved.</p>
+  <style>
+    .site-footer {
+      background: linear-gradient(135deg, #e8daef, #4a3571);
+      color: #fff;
+      text-align: right;
+      padding: 15px 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    body {
+      margin-bottom: 60px;
+    }
+    .screenshot-button {
+      background-color: #f1f8e9;
+      color:#303f9f;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .cart-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+  </style>
+</footer>
+
+<!-- Script -->
+<script>
+  // Abrir/cerrar menú (si aplica)
+  document.querySelector('.menu-toggle')?.addEventListener('click', function() {
+    document.querySelector('.main-nav')?.classList.toggle('open');
+  });
+
+  // Cambiar pestañas (si aplica)
+  function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].classList.remove("active");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.classList.add("active");
+    filterTable();
+  }
+
+  // Actualiza el carrito
+  function updateCart() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    cartItemsContainer.innerHTML = '';
+    let overallTotal = 0;
+
+    document.querySelectorAll('.quantity-selector').forEach(input => {
+      const quantity = parseInt(input.value) || 0;
+      if (quantity > 0) {
+        const row = input.closest('tr');
+        const itemName = row.querySelector('.item-name').textContent;
+        const itemCostText = row.querySelector('.item-cost').textContent.replace(/\./g, '').replace(',', '.');
+        const itemCost = parseFloat(itemCostText);
+        const totalGem = quantity * itemCost;
+        overallTotal += totalGem;
+
+        const imgSrc = row.querySelector('.item-img img').src;
+
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+
+        const imgElem = document.createElement('img');
+        imgElem.src = imgSrc;
+        imgElem.alt = itemName;
+
+        const detailsDiv = document.createElement('div');
+        detailsDiv.className = 'cart-item-details';
+        detailsDiv.innerHTML = `<strong>${quantity}x ${itemName}</strong>
+                                <span>Total Gem: ${totalGem.toLocaleString('en-US')}</span>`;
+
+        const removeButton = document.createElement('button');
+        removeButton.className = 'remove-item';
+        removeButton.innerHTML = '✕';
+        removeButton.onclick = function() {
+          removeFromCart(itemName);
+        };
+
+        cartItem.appendChild(imgElem);
+        cartItem.appendChild(detailsDiv);
+        cartItem.appendChild(removeButton);
+
+        cartItemsContainer.appendChild(cartItem);
+      }
+    });
+
+    document.getElementById('total-gem').textContent = overallTotal.toLocaleString('en-US');
+    saveCart();
+  }
+
+  // Elimina un ítem del carrito
+  function removeFromCart(itemName) {
+    document.querySelectorAll('.item-name').forEach(name => {
+      if (name.textContent === itemName) {
+        name.closest('tr').querySelector('.quantity-selector').value = 0;
+      }
+    });
+    updateCart();
+  }
+
+  // Filtrado por texto
+  function filterTable() {
+    const input = document.getElementById('search') ? document.getElementById('search').value.toLowerCase() : '';
+    const activeTab = document.querySelector('.tabcontent[style="display: block;"]');
+    if (!activeTab) return;
+
+    activeTab.querySelectorAll('tr').forEach(row => {
+      const itemName = row.querySelector('.item-name');
+      if (itemName && itemName.textContent.toLowerCase().includes(input)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
+
+  // Guardar carrito en localStorage
+  function saveCart() {
+    const cart = {};
+    document.querySelectorAll('.quantity-selector').forEach(input => {
+      const row = input.closest('tr');
+      cart[row.dataset.index] = input.value;
+    });
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  // Cargar carrito al iniciar
+  window.onload = function() {
+    const savedCart = JSON.parse(localStorage.getItem('cart')) || {};
+    document.querySelectorAll('.quantity-selector').forEach(input => {
+      const row = input.closest('tr');
+      if (savedCart[row.dataset.index]) input.value = savedCart[row.dataset.index];
+      input.addEventListener('input', updateCart);
+    });
+    updateCart();
+  };
+
+  // ➤ Función del botón de "Restablecer artículos"
+  document.getElementById('reset-button').addEventListener('click', function() {
+    document.querySelectorAll('.quantity-selector').forEach(input => {
+      input.value = 0;
+    });
+    localStorage.removeItem('cart');
+    updateCart();
+    document.getElementById('buy-options').style.display = 'none';
+  });
+</script>
+
+
+
+      
+
+</body>
+</html>

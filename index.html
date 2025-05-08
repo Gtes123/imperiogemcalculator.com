@@ -161,57 +161,60 @@ display: flex;
 
     .tabcontent table {
       width: 100%;
-      border-collapse: collapse;
+      /*border-collapse: collapse;*/
+      border: 1px solid #ccc; /* Borde general de la tabla */
       background: transparent;
-      margin-top: 25px;
+      margin-top: 5px;
     }
 
     .tabcontent thead {
       background: linear-gradient(90deg, #4b2b5e, #6a3e8d);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      border-radius: 10px 10px 0 0;
+      /*border-radius: 10px 10px 0 0;*/
     }
 
     .tabcontent th {
       padding: 15px;
       text-align: center;
       color: #ffffff;
-      font-size: 16px;
+      font-size: 16px;  /* TAMAÑO ENCABEZADO */
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      border: 1px solid #ccc; /* Líneas sólidas entre celdas */
     }
 
     .tabcontent tbody tr {
       background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
+      border-radius: 5px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      /* box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1); */ /* Elimina esta línea */
     }
 
     .tabcontent tbody tr:hover {
       background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      transform: translateY(-3px); /* Efecto Flotacion en la tabla de productos */
+      /*box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);*/
     }
 
     .tabcontent td {
-      padding: 15px;
+      padding: 5px;
       text-align: center;
       font-size: 15px;
-      border: none;
+      /*border: none;*/
+      border: 1px solid #ccc; /* Líneas sólidas entre celdas */
     }
 
     .tabcontent td.item-img {
-      padding: 10px;
+      padding: 1px;
     }
 
-    .item-img img {
-      width: 60px;
-      height: 60px;
+    .item-img img {  /* TAMAÑO DE LA IMAGEN DE LA TABLA */
+      width: 25px;
+      height: 25px;
       object-fit: cover;
       border-radius: 10px;
-      border: 2px solid rgba(147, 102, 184, 0.3);
+      border: 1px solid rgba(147, 102, 184, 0.3);
       transition: border-color 0.3s ease;
     }
 
@@ -231,7 +234,7 @@ display: flex;
 
     .quantity-selector {
       width: 90px;
-      padding: 10px;
+      padding: 3px;
       border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.2);
       text-align: center;
@@ -248,7 +251,7 @@ display: flex;
 
     /* Sección de carrito avanzado */
     #cart {
-      margin-top: 30px;
+      margin-top: 10px;
       margin-bottom: 80px;
       background: linear-gradient(135deg, rgba(40, 25, 60, 0.9), rgba(75, 45, 95, 0.9));
       padding: 20px; /* Padding biraz azaltıldı */
@@ -269,9 +272,9 @@ display: flex;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 5px;
     }
 
     .buy-button, .screenshot-button, .buy-option-button {
@@ -323,7 +326,7 @@ display: flex;
     #cart-items {
       display: flex;
       flex-wrap: wrap; /* Ürünler yatayda sıralanır ve alta kayar */
-      gap: 10px; /* Boşluklar azaltıldı */
+      gap: 5px; /* Boşluklar azaltıldı */
     }
     #cart-items::-webkit-scrollbar {
       width: 8px;

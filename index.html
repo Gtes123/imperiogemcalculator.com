@@ -83,11 +83,11 @@ display: flex;
     .calculator-container {
       width: 100%;
       max-width: 1200px;
-      margin: 10px auto;
-      padding: 15px;
+      margin: 5px auto;
+      padding: 5px;
       box-sizing: border-box;
       background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
+      border-radius: 5px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -98,7 +98,8 @@ display: flex;
       font-size: 2em;
       color: #4b0082; /* Morado oscuro (índigo) */
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      margin-bottom: 20px;
+      margin-bottom: 5px; /* Altura del titulo a la tabla */
+
     }
 
     /* CONTENEDOR DE PESTAÑASR */
@@ -107,7 +108,7 @@ display: flex;
       flex-wrap: wrap;
       gap: 10px;
       background: linear-gradient(135deg, #2a1a3f, #3b2a5d);
-      padding: 15px;
+      padding: 15px;  /* espacio de las pestañas */
       border-radius: 12px;
       overflow-x: hidden;
     }
@@ -132,7 +133,7 @@ display: flex;
       background: linear-gradient(145deg, #6a3e8d, #9366b8);
       color: #fff;
       border: none;
-      padding: 12px 25px;
+      padding: 5px 5px;  /* ancho del boton y espacio entre botones */
       cursor: pointer;
       border-radius: 8px;
       font-size: 15px;
@@ -161,7 +162,7 @@ display: flex;
 
     .tabcontent table {
       width: 100%;
-      /*border-collapse: collapse;*/
+      border-collapse: collapse;
       border: 1px solid #ccc; /* Borde general de la tabla */
       background: transparent;
       margin-top: 5px;
@@ -174,10 +175,10 @@ display: flex;
     }
 
     .tabcontent th {
-      padding: 15px;
+      padding: 5px;
       text-align: center;
       color: #ffffff;
-      font-size: 16px;  /* TAMAÑO ENCABEZADO */
+      font-size: 15px;  /* TAMAÑO TEXTO ENCABEZADO */
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -198,7 +199,7 @@ display: flex;
     }
 
     .tabcontent td {
-      padding: 5px;
+      padding: 0px;
       text-align: center;
       font-size: 15px;
       /*border: none;*/
@@ -210,10 +211,10 @@ display: flex;
     }
 
     .item-img img {  /* TAMAÑO DE LA IMAGEN DE LA TABLA */
-      width: 25px;
-      height: 25px;
+      width: 20px;
+      height: 20px;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 0px;
       border: 1px solid rgba(147, 102, 184, 0.3);
       transition: border-color 0.3s ease;
     }
@@ -233,9 +234,9 @@ display: flex;
     }
 
     .quantity-selector {
-      width: 90px;
-      padding: 3px;
-      border-radius: 8px;
+      width: 100px;
+      padding: 0px;  /* TAMAÑO ALTO DEL LA CAJA DE CANTIDAD */
+      border-radius: 0px;
       border: 1px solid rgba(255, 255, 255, 0.2);
       text-align: center;
       font-size: 14px;
@@ -251,18 +252,18 @@ display: flex;
 
     /* Sección de carrito avanzado */
     #cart {
-      margin-top: 10px;
-      margin-bottom: 80px;
+      margin-top: 2px;
+      margin-bottom: 2px;
       background: linear-gradient(135deg, rgba(40, 25, 60, 0.9), rgba(75, 45, 95, 0.9));
-      padding: 20px; /* Padding biraz azaltıldı */
-      border-radius: 15px;
+      padding: 2px; /* Padding biraz azaltıldı */
+      border-radius: 5px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     #cart h3 {
-      margin-bottom: 15px; /* Başlık ile içerik arası azaltıldı */
+      margin-bottom: 5px; /* espacio entre el titulo y conte tabla carrito */
       font-size: 1.6em; /* Başlık biraz küçültüldü */
       text-align: center;
       color: #fff;
@@ -326,7 +327,7 @@ display: flex;
     #cart-items {
       display: flex;
       flex-wrap: wrap; /* Ürünler yatayda sıralanır ve alta kayar */
-      gap: 5px; /* Boşluklar azaltıldı */
+      gap: 3px; /* Espacio entre cada fila del carrito */
     }
     #cart-items::-webkit-scrollbar {
       width: 8px;
@@ -345,7 +346,7 @@ display: flex;
       display: flex;
       align-items: center;
       background: rgba(255, 255, 255, 0.1);
-      padding: 8px; /* Padding azaltıldı */
+      padding: 0px; /* Relleno reducido */
       border-radius: 8px;
       transition: all 0.3s ease;
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -360,11 +361,11 @@ display: flex;
     }
 
     .cart-item img {
-      width: 40px; /* Resim boyutu küçültüldü */
-      height: 40px;
+      width: 20px; /* ancho Imagen Carrito */
+      height: 20px; /* alto Imagen Carrito */
       object-fit: cover;
       margin-right: 10px; /* Boşluk azaltıldı */
-      border-radius: 6px;
+      border-radius: 1px;
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
@@ -383,7 +384,7 @@ display: flex;
 
     .cart-item-details span {
       display: block;
-      font-size: 0.8em; /* Detaylar daha küçük */
+      font-size: 0.8em; /* detalles pequeño */
       color: #d0d0d0;
     }
 
@@ -392,9 +393,9 @@ display: flex;
       color: white;
       border: none;
       border-radius: 50%;
-      width: 20px; /* Buton boyutu küçültüldü */
-      height: 20px;
-      font-size: 14px; /* Yazı boyutu küçültüldü */
+      width: 20px; /* ancho tamaño imagen eliminación */
+      height: 20px; /* alto tamaño imagen eliminación */
+      font-size: 14px; /* tamaño de fuente */
       cursor: pointer;
       display: flex;
       align-items: center;

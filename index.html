@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -211,8 +210,8 @@ display: flex;
     }
 
     .item-img img {  /* TAMAÑO DE LA IMAGEN DE LA TABLA */
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
       object-fit: cover;
       border-radius: 0px;
       border: 1px solid rgba(147, 102, 184, 0.3);
@@ -361,8 +360,8 @@ display: flex;
     }
 
     .cart-item img {
-      width: 20px; /* ancho Imagen Carrito */
-      height: 20px; /* alto Imagen Carrito */
+      width: 25px; /* ancho Imagen Carrito */
+      height: 25px; /* alto Imagen Carrito */
       object-fit: cover;
       margin-right: 10px; /* Boşluk azaltıldı */
       border-radius: 1px;
@@ -418,7 +417,7 @@ display: flex;
       width: 100%;
     }
 
-    /* Mobil Uyumluluk */
+    /* Compatibilidad para mobil */
     @media (max-width: 1300px) {
       .tab {
         padding: 10px;
@@ -446,17 +445,17 @@ display: flex;
       }
 
       .screenshot-button, .buy-option-button {
-        width: 100%;
+        width: 100%;  /* ancho boton restablecer artículos */
         padding: 12px;
       }
 
       .cart-total {
         text-align: center;
-        margin-top: 15px;
+        margin-top: 5px;  /* espacio entre reestablecer articulo y total */
       }
 
       #cart {
-        margin-bottom: 60px;
+        margin-bottom: 1px;  /* espacio en trabla carrito y pie de pagina */
       }
     }
 
@@ -472,13 +471,13 @@ display: flex;
       }
 
       .tabcontent th, .tabcontent td {
-        padding: 10px;
-        font-size: 13px;
+        padding: 0px;
+        font-size: 13px;  /* Tamaño texto de la tabla productos */
       }
 
       .item-img img {
-        width: 45px;
-        height: 45px;
+        width: 25px;
+        height: 25px;
       }
       .cart-item {
         flex: 1 1 100%; /* Küçük ekranlarda tek sütun */
@@ -486,7 +485,7 @@ display: flex;
       }
       .quantity-selector {
         width: 70px;
-        padding: 6px;
+        padding: 0px;
       }
     }
 
@@ -496,7 +495,7 @@ display: flex;
       }
 
       .tab {
-        padding: 8px;
+        padding: 8px;  /* margen de las pestañas*/
       }
 
       .tab button.tablinks {
@@ -506,17 +505,17 @@ display: flex;
       }
 
       .item-img img {
-        width: 40px;
-        height: 40px;
+        width: 25px;
+        height: 25px;
       }
 
       .quantity-selector {
         width: 60px;
-        padding: 5px;
+        padding: 0px;
       }
 
       .cart-item img {
-        margin-right: 1;
+        margin-right: 1px;
         margin-bottom: 10px;
       }
 

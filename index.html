@@ -325,7 +325,7 @@ display: flex;
 
     #cart-items {
       display: flex;
-      flex-wrap: wrap; /* Ürünler yatayda sıralanır ve alta kayar */
+      flex-wrap: wrap; /* Los productos se organizan horizontalmente y se desplazan hasta la parte inferior. */
       gap: 3px; /* Espacio entre cada fila del carrito */
     }
     #cart-items::-webkit-scrollbar {
@@ -349,8 +349,8 @@ display: flex;
       border-radius: 8px;
       transition: all 0.3s ease;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      flex: 1 1 calc(33% - 10px); /* Her satırda 3 ürün olacak şekilde */
-      min-width: 100%; /* Minimum genişlik */
+      flex: 1 1 calc(33% - 10px); /* Cada fila tendrá 3 productos. */
+      min-width: 100%; /* Ancho minimo */
     }
 
     .cart-item:hover {
@@ -360,8 +360,8 @@ display: flex;
     }
 
     .cart-item img {
-      width: 25px; /* ancho Imagen Carrito */
-      height: 25px; /* alto Imagen Carrito */
+      width: 35px; /* ancho Imagen Carrito */
+      height: 35px; /* alto Imagen Carrito */
       object-fit: cover;
       margin-right: 10px; /* Boşluk azaltıldı */
       border-radius: 1px;
@@ -435,8 +435,8 @@ display: flex;
       }
 
       .item-img img {
-        width: 50px;
-        height: 50px;
+        width: 25px;
+        height: 25px;
       }
 
       .cart-controls {
@@ -1965,3 +1965,4 @@ display: flex;
 
 </body>
 </html>
+
